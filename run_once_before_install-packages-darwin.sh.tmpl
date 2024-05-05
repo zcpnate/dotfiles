@@ -33,6 +33,8 @@ fi
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
+rm ~/.zshrc
+
 export ZDOTDIR=~/.config/zsh
 
 [[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.bak
