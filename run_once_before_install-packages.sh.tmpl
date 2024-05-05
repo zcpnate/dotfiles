@@ -1,0 +1,20 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+
+export ZDOTDIR=~/.config/zsh
+
+[[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.bak
+ln -s $ZDOTDIR/.zshenv ~/.zshenv
+
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+#install homebrew
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+export ZDOTDIR=~/.config/zsh
+
+[[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.bak
+ln -s $ZDOTDIR/.zshenv ~/.zshenv
+
+{{ end -}}
