@@ -32,7 +32,7 @@ else
 fi
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+~/.fzf/install --bin
 
 export ZDOTDIR=~/.config/zsh
 ZSH="$ZDOTDIR/.oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
