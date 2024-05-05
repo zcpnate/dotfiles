@@ -95,7 +95,13 @@ else
 fi
 
 export ZDOTDIR=~/.config/zsh
-ZSH="$ZDOTDIR/.oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+export ZSH="$ZDOTDIR/.oh-my-zsh"
+
+if [ ! -d "$ZSH" ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+else
+    echo "ZSH directory already exists."
+fi
 
 [ -f ~/.zshrc ] && rm ~/.zshrc
 
