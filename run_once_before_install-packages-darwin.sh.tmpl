@@ -54,6 +54,9 @@ fi
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 export ZDOTDIR=~/.config/zsh
+ZSH="$ZDOTDIR/.oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+rm ~/.zshrc
 
 [[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.bak
 ln -s $ZDOTDIR/.zshenv ~/.zshenv
