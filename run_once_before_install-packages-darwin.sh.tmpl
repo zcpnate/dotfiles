@@ -97,7 +97,7 @@ fi
 export ZDOTDIR=~/.config/zsh
 ZSH="$ZDOTDIR/.oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-rm ~/.zshrc
+[ -f ~/.zshrc ] && rm ~/.zshrc
 
 [[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.bak
 ln -s $ZDOTDIR/.zshenv ~/.zshenv
