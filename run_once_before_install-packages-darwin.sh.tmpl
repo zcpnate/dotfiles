@@ -27,7 +27,7 @@ esac
 # Proceed with installation and configuration
 if ! command -v zsh >/dev/null 2>&1; then
     echo "Installing zsh on $os_name..."
-    $install_command zsh
+    sudo $install_command zsh
 else
     echo "zsh is already installed."
 fi
