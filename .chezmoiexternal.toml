@@ -1,55 +1,55 @@
-["$ZSH_CUSTOM/plugins/zsh-autosuggestions"]
+[".config/zsh/custom/plugins/zsh-autosuggestions"]
     type = "git-repo"
     url = "https://github.com/zsh-users/zsh-autosuggestions.git"
     refreshPeriod = "168h"
-    ["$ZSH_CUSTOM/plugins/zsh-autosuggestions".pull]
+    [".config/zsh/custom/plugins/zsh-autosuggestions".pull]
         args = ["--ff-only"]
 
-["$ZSH_CUSTOM/plugins/zsh-autocomplete"]
+[".config/zsh/custom/plugins/zsh-autocomplete"]
     type = "git-repo"
     url = "https://github.com/marlonrichert/zsh-autocomplete.git"
     refreshPeriod = "168h"
-    ["$ZSH_CUSTOM/plugins/zsh-autocomplete".pull]
+    [".config/zsh/custom/plugins/zsh-autocomplete".pull]
         args = ["--ff-only"]
 
-["$ZSH_CUSTOM/plugins/fast-syntax-highlighting"]
+[".config/zsh/custom/plugins/fast-syntax-highlighting"]
     type = "git-repo"
     url = "https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
     refreshPeriod = "168h"
-    ["$ZSH_CUSTOM/plugins/fast-syntax-highlighting".pull]
+    [".config/zsh/custom/plugins/fast-syntax-highlighting".pull]
         args = ["--ff-only"]
 
-["$ZSH_CUSTOM/plugins/zsh-bat"]
+[".config/zsh/custom/plugins/zsh-bat"]
     type = "git-repo"
     url = "https://github.com/fdellwing/zsh-bat.git"
     refreshPeriod = "168h"
-    ["$ZSH_CUSTOM/plugins/zsh-bat".pull]
+    [".config/zsh/custom/plugins/zsh-bat".pull]
         args = ["--ff-only"]
 
-["$ZSH_CUSTOM/plugins/you-should-use"]
+[".config/zsh/custom/plugins/you-should-use"]
     type = "git-repo"
     url = "https://github.com/MichaelAquilina/zsh-you-should-use.git"
     refreshPeriod = "168h"
-    ["$ZSH_CUSTOM/plugins/you-should-use".pull]
+    [".config/zsh/custom/plugins/you-should-use".pull]
         args = ["--ff-only"]
 
-["$ZSH_CUSTOM/plugins/zsh-lsd"]
+[".config/zsh/custom/plugins/zsh-lsd"]
     type = "git-repo"
     url = "https://github.com/z-shell/zsh-lsd.git"
     refreshPeriod = "168h"
-    ["$ZSH_CUSTOM/plugins/zsh-lsd".pull]
+    [".config/zsh/custom/plugins/zsh-lsd".pull]
         args = ["--ff-only"]
 
-["$ZSH_CUSTOM/plugins/fzf-tab"]
+[".config/zsh/custom/plugins/fzf-tab"]
     type = "git-repo"
     url = "https://github.com/Aloxaf/fzf-tab.git"
     refreshPeriod = "168h"
-    ["$ZSH_CUSTOM/plugins/fzf-tab".pull]
+    [".config/zsh/custom/plugins/fzf-tab".pull]
         args = ["--ff-only"]
 
-["$ZSH_CUSTOM/plugins/ohmyzsh-full-autoupdate"]
+[".config/zsh/custom/plugins/ohmyzsh-full-autoupdate"]
     type = "git-repo"
     url = "https://github.com/Pilaton/OhMyZsh-full-autoupdate.git"
     refreshPeriod = "168h"
-    ["$ZSH_CUSTOM/plugins/ohmyzsh-full-autoupdate".pull]
+    [".config/zsh/custom/plugins/ohmyzsh-full-autoupdate".pull]
         args = ["--ff-only"]
