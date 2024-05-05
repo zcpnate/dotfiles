@@ -146,6 +146,7 @@ export EDITOR="code -w"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias pip=pip3
 alias nz="nano $ZDOTDIR/.zshrc"
+alias meld='meld_script(){ /Applications/Meld.app/Contents/MacOS/Meld $* 2>/dev/null & };meld_script'
 
 # CodeWhisperer post block. Keep at the bottom of this file.
 #[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
