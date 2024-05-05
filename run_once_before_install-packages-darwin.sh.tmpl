@@ -6,9 +6,12 @@ os_name=$(grep '^ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
 
 # Set the zsh installation command depending on the distribution
 install_command=""
+chsh_command="chsh -s"
 case "$os_name" in
     almalinux)
         install_command="sudo dnf install -y"
+        # Ensure util-linux-user is installed for chsh
+        sudo dnf install -y util-linux-user
         ;;
     amzn | amazon)
         install_command="sudo yum install -y"
@@ -36,9 +39,9 @@ export ZDOTDIR=~/.config/zsh
 [[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.bak
 ln -s $ZDOTDIR/.zshenv ~/.zshenv
 
-# Set zsh as the default shell
+# Set zsh as the default shell using chsh if available
 if [ "$SHELL" != "$(which zsh)" ]; then
-    chsh -s "$(which zsh)"
+    $chsh_command "$(which zsh)"
     echo "zsh set as default shell."
 else
     echo "zsh is already the default shell."
