@@ -31,11 +31,10 @@ else
     echo "zsh is already installed."
 fi
 
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+export ZDOTDIR=~/.config/zsh
+ZSH="$ZDOTDIR/oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 rm ~/.zshrc
-
-export ZDOTDIR=~/.config/zsh
 
 [[ -f ~/.zshenv ]] && mv -f ~/.zshenv ~/.zshenv.bak
 ln -s $ZDOTDIR/.zshenv ~/.zshenv
