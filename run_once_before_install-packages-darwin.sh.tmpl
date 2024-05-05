@@ -23,16 +23,41 @@ case "$os_name" in
         exit 1
 esac
 
+if ! command -v brew &> /dev/null
+then
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo "Brew is already installed."
+fi
+
 # Proceed with installation and configuration
 if ! command -v zsh >/dev/null 2>&1; then
     echo "Installing zsh on $os_name..."
-    $install_command zsh
+    brew install zsh
 else
     echo "zsh is already installed."
 fi
 
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install --bin
+if ! command -v fzf >/dev/null 2>&1; then
+    echo "Installing fzf on $os_name..."
+    brew install fzf
+else
+    echo "fzf is already installed."
+fi
+
+if ! command -v lsd >/dev/null 2>&1; then
+    echo "Installing lsd on $os_name..."
+    brew install lsd
+else
+    echo "lsd is already installed."
+fi
+
+if ! command -v fuck >/dev/null 2>&1; then
+    echo "Installing thefuck on $os_name..."
+    brew install thefuck
+else
+    echo "thefuck is already installed."
+fi
 
 export ZDOTDIR=~/.config/zsh
 export ZSH="$ZDOTDIR/.oh-my-zsh"
@@ -60,7 +85,12 @@ fi
 #!/bin/sh
 
 #install homebrew
-NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if ! command -v brew &> /dev/null
+then
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo "Brew is already installed."
+fi
 
 export ZDOTDIR=~/.config/zsh
 ZSH="$ZDOTDIR/.oh-my-zsh" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
