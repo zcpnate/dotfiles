@@ -30,6 +30,8 @@ else
     echo "Brew is already installed."
 fi
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # Proceed with installation and configuration
 if ! command -v zsh >/dev/null 2>&1; then
     echo "Installing zsh on $os_name..."
