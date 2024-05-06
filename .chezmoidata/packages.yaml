@@ -26,6 +26,7 @@ packages:
     - 'neofetch'
     - 'speedtest-cli'
     - 'xxh'
+    - 'iproute2mac'
     casks:
     - '1password'
     - 'adobe-creative-cloud'
