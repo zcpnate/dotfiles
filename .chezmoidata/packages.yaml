@@ -18,6 +18,7 @@ packages:
     - 'pipx'
     - 'pyenv'
     - 'go'
+    - 'jq'
     - 'tmux'
   darwin:
     brews:
