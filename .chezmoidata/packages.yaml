@@ -9,6 +9,7 @@ packages:
     - 'btop'
     - 'duf'
     - 'doggo'
+    - 'dust'
     - 'tokei'
     - 'tealdeer'
     - 'sevenzip'
