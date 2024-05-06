@@ -1,0 +1,48 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/sh
+
+# Read the distribution ID directly from /etc/os-release
+os_name=$(grep '^ID=' /etc/os-release | cut -d= -f2 | tr -d '"')
+
+# Set the zsh installation command depending on the distribution
+install_command=""
+case "$os_name" in
+    almalinux)
+        install_command="sudo dnf install -y"
+        # Ensure util-linux-user is installed for chsh
+        sudo dnf install -y util-linux-user
+        ;;
+    amzn | amazon)
+        install_command="sudo yum install -y"
+        ;;
+    ubuntu)
+        install_command="sudo apt-get install -y"
+        ;;
+    *)
+        echo "Unsupported distribution: $os_name"
+        exit 1
+esac
+
+if ! command -v brew &> /dev/null
+then
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo "Brew is already installed."
+fi
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
+
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+#install homebrew
+if ! command -v brew &> /dev/null
+then
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo "Brew is already installed."
+fi
+
+{{ end -}}
