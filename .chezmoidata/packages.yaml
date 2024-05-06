@@ -8,6 +8,7 @@ packages:
     - 'bat'
     - 'btop'
     - 'duf'
+    - 'doggo'
     - 'tokei'
     - 'tealdeer'
     - 'sevenzip'
