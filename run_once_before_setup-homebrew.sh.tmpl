@@ -30,9 +30,6 @@ else
     echo "Brew is already installed."
 fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-
 
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh

@@ -1,4 +1,8 @@
 #!/bin/bash
+{{ if eq .chezmoi.os "linux" -}}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{ end }}
+
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range .packages.global.tap -}}
 tap {{ . | quote }}
