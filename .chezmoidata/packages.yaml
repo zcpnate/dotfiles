@@ -15,6 +15,7 @@ packages:
     - 'sevenzip'
     - 'gping'
     - 'fzf'
+    - 'lnav'
     - 'lsd'
     - 'zsh'
     - 'thefuck'
