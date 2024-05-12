@@ -40,6 +40,7 @@ packages:
       - "speedtest-cli"
       - "xxh"
       - "iproute2mac"
+      - "terraform"
     casks:
       - "1password"
       - "adobe-creative-cloud"
