@@ -5,6 +5,7 @@ packages:
       - "homebrew/bundle"
       - "homebrew/cask-fonts"
     brews:
+      - "nvim"
       - "node"
       - "ripgrep"
       - "bat"
