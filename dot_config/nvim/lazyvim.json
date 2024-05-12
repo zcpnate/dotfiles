@@ -1,6 +1,7 @@
 {
   "extras": [
-
+    "lazyvim.plugins.extras.lang.helm",
+    "lazyvim.plugins.extras.lang.terraform"
   ],
   "news": {
     "NEWS.md": "3314"
