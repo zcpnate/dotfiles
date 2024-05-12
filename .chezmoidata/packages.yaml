@@ -34,6 +34,7 @@ packages:
       - "jq"
       - "tmux"
   darwin:
+    tap:
     brews:
       - "chezmoi"
       - "neofetch"
