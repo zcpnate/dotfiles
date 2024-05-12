@@ -17,6 +17,7 @@ packages:
       - "tealdeer"
       - "sevenzip"
       - "gping"
+      - "lazygit"
       - "fzf"
       - "lnav"
       - "lsd"
