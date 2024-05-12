@@ -42,6 +42,7 @@ packages:
       - "xxh"
       - "iproute2mac"
       - "terraform"
+      - "wget"
     casks:
       - "1password"
       - "adobe-creative-cloud"
