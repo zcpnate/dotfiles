@@ -45,6 +45,7 @@ packages:
       - "wget"
     casks:
       - "1password"
+      - "karabiner-elements"
       - "adobe-creative-cloud"
       - "arc"
       - "betterdisplay"
