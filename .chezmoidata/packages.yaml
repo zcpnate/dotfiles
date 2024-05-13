@@ -5,6 +5,7 @@ packages:
       - "homebrew/bundle"
       - "homebrew/cask-fonts"
     brews:
+      - "prettier"
       - "nvim"
       - "node"
       - "ripgrep"
@@ -30,9 +31,11 @@ packages:
       - "nanorc"
       - "pipx"
       - "pyenv"
+      - "pyenv-virtualenv"
       - "go"
       - "jq"
       - "tmux"
+      - "gnu-sed"
   darwin:
     tap:
     brews:
