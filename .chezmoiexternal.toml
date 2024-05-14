@@ -60,3 +60,10 @@
     refreshPeriod = "168h"
     [".config/zsh/custom/themes/powerlevel10k".pull]
         args = ["--ff-only"]
+
+[".config/tmux/omt"]
+    type = "git-repo"
+    url = "https://github.com/gpakosz/.tmux.git"
+    refreshPeriod = "168h"
+    [".config/tmux/omt".pull]
+        args = ["--ff-only"]
