@@ -36,6 +36,7 @@ packages:
       - "jq"
       - "tmux"
       - "gnu-sed"
+      - "tpm"
   darwin:
     tap:
     brews:
