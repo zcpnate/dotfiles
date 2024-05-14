@@ -137,7 +137,7 @@ export HISTFILE="$ZDOTDIR/.zsh_history"
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR="code -w"
+export EDITOR="nvim"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
