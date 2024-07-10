@@ -3,7 +3,6 @@ packages:
     tap:
       - "buo/cask-upgrade"
       - "homebrew/bundle"
-      - "homebrew/cask-fonts"
     brews:
       - "prettier"
       - "nvim"
