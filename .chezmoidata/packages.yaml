@@ -54,6 +54,7 @@ packages:
       - "coconutbattery"
       - "discord"
       - "docker"
+      - "colima"
       - "font-hack-nerd-font"
       - "hammerspoon"
       - "home-assistant"
