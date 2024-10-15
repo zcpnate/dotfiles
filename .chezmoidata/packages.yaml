@@ -41,7 +41,6 @@ packages:
       - "chezmoi"
       - "neofetch"
       - "speedtest-cli"
-      - "xxh"
       - "iproute2mac"
       - "terraform"
       - "wget"
