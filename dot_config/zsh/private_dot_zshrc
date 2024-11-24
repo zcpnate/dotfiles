@@ -95,10 +95,10 @@ ZSH_CUSTOM=$ZDOTDIR/custom
 
 
 # Check if the operating system is macOS
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    eval "$(/opt/homebrew/bin/pyenv init --path)"
-fi
+# if [[ "$OSTYPE" == "darwin"* ]]; then
+#     export PYENV_ROOT="$HOME/.pyenv"
+#     eval "$(/opt/homebrew/bin/pyenv init --path)"
+# fi
 
 
 # Which plugins would you like to load?
@@ -120,7 +120,6 @@ thefuck
 vscode
 you-should-use
 ohmyzsh-full-autoupdate
-pyenv
 )
 
 
@@ -196,13 +195,5 @@ export FZF_CTRL_R_OPTS="
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="
   --preview 'tree -C {}'"
-
-
-#Pyenv Setup
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init --path)"
-fi
 
 export PATH=~/.local/bin:$PATH
