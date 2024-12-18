@@ -118,6 +118,7 @@ zsh-lsd
 zsh-bat
 thefuck
 vscode
+kubectl
 you-should-use
 ohmyzsh-full-autoupdate
 )

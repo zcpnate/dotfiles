@@ -34,6 +34,7 @@ packages:
       - "infracost"
       - "jq"
       - "kubernetes-cli"
+      - "kubie"
       - "lazygit"
       - "lnav"
       - "lsd"
