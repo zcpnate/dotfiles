@@ -43,8 +43,6 @@ packages:
       - "nanorc"
       - "neovim"
       - "nmap"
-      - "oath-toolkit"
-      - "openshift-cli"
       - "pipx"
       - "poetry"
       - "pre-commit"
