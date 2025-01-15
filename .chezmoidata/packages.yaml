@@ -26,6 +26,7 @@ packages:
       - "ffmpeg"
       - "fzf"
       - "gh"
+      - "ghostty"
       - "go"
       - "gping"
       - "handbrake"
