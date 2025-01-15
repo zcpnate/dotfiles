@@ -50,6 +50,7 @@ packages:
       - "pyenv-virtualenv"
       - "ripgrep"
       - "sevenzip"
+      - "starship"
       - "tealdeer"
       - "tenv"
       - "terraform-docs"
