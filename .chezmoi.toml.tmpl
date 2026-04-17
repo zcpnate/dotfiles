@@ -1,0 +1,11 @@
+[diff]
+    command = "/Applications/Meld.app/Contents/MacOS/Meld"
+    args = ["{{ `{{ .Destination }}` }}", "{{ `{{ .Target }}` }}"]
+
+[merge]
+    command = "/Applications/Meld.app/Contents/MacOS/Meld"
+    args = ["{{ `{{ .Destination }}` }}", "{{ `{{ .Source }}` }}", "{{ `{{ .Target }}` }}"]
+
+[data]
+    name = {{ promptStringOnce . "name" "Full name" | quote }}
+    email = {{ promptStringOnce . "email" "Email address" | quote }}
