@@ -1,0 +1,8 @@
+[settings]
+python.uv_venv_auto = "source"
+
+[tools]
+go = "1.26.2"
+node = "24"
+python = "3.13.3"
+terraform = "1.14.8"

@@ -1,0 +1,18 @@
+[user]
+	email = nofarrell@cfs.energy
+	name = "Nate O'Farrell"
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINVsrwlXJgPCWNeLIJboPaylhnC9o1jaosDOVhSzcu2A
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential

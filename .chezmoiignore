@@ -1,4 +1,2 @@
 README.md
-{{- if ne .chezmoi.os "darwin" }}
-.config/iterm2
-{{- end }}
+.mcp.json

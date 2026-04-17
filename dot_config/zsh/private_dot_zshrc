@@ -109,15 +109,28 @@ fzf-tab
 zsh-autosuggestions
 zsh-lsd
 zsh-bat
-thefuck
+mise
 kubectl
 you-should-use
 ohmyzsh-full-autoupdate
+zoxide
+colored-man-pages
+command-not-found
+fancy-ctrl-z
 )
 
 # User configuration
 
 export HISTFILE="$ZDOTDIR/.zsh_history"
+# History configuration
+export HISTSIZE=50000        # Number of commands to keep in memory
+export SAVEHIST=50000        # Number of commands to save to history file
+setopt HIST_IGNORE_DUPS      # Don't save duplicate commands
+setopt HIST_IGNORE_SPACE     # Don't save commands that start with space
+setopt HIST_VERIFY           # Show command with history expansion to user before running it
+setopt SHARE_HISTORY         # Share history between all sessions
+setopt APPEND_HISTORY        # Append to history file, don't overwrite it
+setopt INC_APPEND_HISTORY    # Write to history file immediately, not when shell exits
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -147,10 +160,15 @@ alias pip=pip3
 alias zedit="$EDITOR $ZDOTDIR/.zshrc"
 alias meld='meld_script(){ /Applications/Meld.app/Contents/MacOS/Meld $* 2>/dev/null & };meld_script'
 
+export PATH="$HOME/.git-tools:$PATH"
+
 #bindkey '^I'      autosuggest-accept
 #ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
 #ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 #ZSH_AUTOSUGGEST_USE_ASYNC=true
+
+
+
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -180,7 +198,10 @@ export FZF_ALT_C_OPTS="
   --preview 'tree -C {}'"
 
 export PATH=~/.local/bin:$PATH
+export PATH="/opt/homebrew/sbin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
+
+unalias gsd 2>/dev/null
 
 eval "$(starship init zsh)"

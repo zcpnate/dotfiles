@@ -1,31 +1,13 @@
 #!/bin/bash
-{{ if eq .chezmoi.os "linux" -}}
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-{{ end }}
 
-brew bundle --no-lock --file=/dev/stdin <<EOF
-{{ range .packages.global.tap -}}
+brew bundle --file=/dev/stdin <<EOF
+{{ range .packages.brews.tap -}}
 tap {{ . | quote }}
 {{ end -}}
-{{ range .packages.global.brews -}}
+{{ range .packages.brews.formulae -}}
 brew {{ . | quote }}
 {{ end -}}
-EOF
-
-{{ if eq .chezmoi.os "darwin" -}}
-
-brew bundle --no-lock --file=/dev/stdin <<EOF
-{{ range .packages.darwin.tap -}}
-tap {{ . | quote }}
-{{ end -}}
-{{ range .packages.darwin.brews -}}
-brew {{ . | quote }}
-{{ end -}}
-{{ range .packages.darwin.casks -}}
+{{ range .packages.brews.casks -}}
 cask {{ . | quote }}
 {{ end -}}
 EOF
-
-{{ else if eq .chezmoi.os "linux" -}}
-
-{{ end -}}
