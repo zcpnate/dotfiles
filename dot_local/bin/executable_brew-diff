@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+yaml="${CHEZMOI_SOURCE_DIR:-$HOME/.local/share/chezmoi}/.chezmoidata/packages.yaml"
+if [[ ! -f "$yaml" ]]; then
+  echo "packages.yaml not found at $yaml" >&2
+  exit 1
+fi
+
+tracked_formulae=$(grep -A9999 'formulae:' "$yaml" | grep -B9999 'casks:' | grep '^\s*-' | sed 's/.*"\(.*\)"/\1/')
+tracked_casks=$(grep -A9999 'casks:' "$yaml" | grep '^\s*-' | sed 's/.*"\(.*\)"/\1/')
+tracked_taps=$(grep -A9999 'tap:' "$yaml" | grep -B9999 'formulae:' | grep '^\s*-' | sed 's/.*"\(.*\)"/\1/')
+
+live_formulae=$(brew leaves)
+live_casks=$(brew list --cask 2>/dev/null)
+live_taps=$(brew tap)
+
+echo "=== Formulae not in packages.yaml ==="
+comm -23 <(echo "$live_formulae" | sort) <(echo "$tracked_formulae" | sort) | sed 's/^/  - "/' | sed 's/$/"/'
+
+echo ""
+echo "=== Casks not in packages.yaml ==="
+comm -23 <(echo "$live_casks" | sort) <(echo "$tracked_casks" | sort) | sed 's/^/  - "/' | sed 's/$/"/'
+
+echo ""
+echo "=== Taps not in packages.yaml ==="
+comm -23 <(echo "$live_taps" | sort) <(echo "$tracked_taps" | sort) | sed 's/^/  - "/' | sed 's/$/"/'
+
+echo ""
+echo "=== In packages.yaml but not installed (formulae) ==="
+comm -23 <(echo "$tracked_formulae" | sort) <(echo "$live_formulae" | sort) | sed 's/^/  /'
