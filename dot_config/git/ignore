@@ -1,1 +1,23 @@
 **/.claude/settings.local.json
+
+# ── GSD baseline (auto-generated) ──
+.gsd
+.gsd-id
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.code-workspace
+.next/
+dist/
+build/
+__pycache__/
+*.pyc
+.venv/
+venv/
+target/
+vendor/
+coverage/
+tmp/

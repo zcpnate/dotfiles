@@ -1,0 +1,12 @@
+# vim: ft=sh
+# TOKEN from OS keyring. Set: chezmoi secret keyring set --service=slack_status --user=token
+TOKEN={{ keyring "slack_status" "token" }}
+
+PRESET_EMOJI_test=":white_check_mark:"
+PRESET_TEXT_test="Testing status updater"
+
+PRESET_EMOJI_zoom=":zoom:"
+PRESET_TEXT_zoom="In a zoom meeting"
+
+PRESET_EMOJI_meet=":google-meet:"
+PRESET_TEXT_meet="In a Google Meet meeting"

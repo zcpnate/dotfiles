@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export ZDOTDIR=~/.config/zsh
+export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export ZSH="$ZDOTDIR/.oh-my-zsh"
 
 if [ ! -d "$ZSH" ]; then
