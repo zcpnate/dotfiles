@@ -2,6 +2,7 @@
 python.uv_venv_auto = "source"
 
 [tools]
+bun = "latest"
 go = "1.26.2"
 node = "24"
 python = "3.13.3"
