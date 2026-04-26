@@ -143,7 +143,7 @@ setopt INC_APPEND_HISTORY    # Write to history file immediately, not when shell
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR="cursor"
+export EDITOR="code"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
