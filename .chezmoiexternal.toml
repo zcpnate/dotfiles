@@ -61,6 +61,11 @@
     [".config/zsh/custom/themes/powerlevel10k".pull]
         args = ["--ff-only"]
 
+[".config/zsh/custom/plugins/orb/orb.plugin.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/orbstack/orbstack/main/orb.plugin.zsh"
+    refreshPeriod = "168h"
+
 [".config/tmux/omt"]
     type = "git-repo"
     url = "https://github.com/gpakosz/.tmux.git"
