@@ -7,3 +7,4 @@ export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
 
 #.zshenv
 #export ZDOTDIR=~/.config/zsh; [ -f $ZDOTDIR/.zshenv ] && . $ZDOTDIR/.zshenv
+. "$HOME/.cargo/env"
