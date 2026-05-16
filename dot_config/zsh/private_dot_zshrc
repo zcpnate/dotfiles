@@ -101,6 +101,7 @@ ZSH_CUSTOM=$ZDOTDIR/custom
 plugins=(
 aws
 brew
+gcloud
 git
 gh
 fzf
