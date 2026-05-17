@@ -1,4 +1,4 @@
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply zcpnate
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply cfsnate
 
 ## Slack token
 
