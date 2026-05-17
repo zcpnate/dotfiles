@@ -1,0 +1,13 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+
+# Provision mise-managed runtimes/tools (bun, node, etc.) on a fresh machine.
+# Runs after Homebrew installs `mise` (run_onchange_install-packages, same
+# apply stage, sorts earlier) and after chezmoi writes ~/.config/mise/config.toml.
+# Re-runs whenever the tracked mise tool list changes.
+#
+# mise config hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+mise install -y
+{{ end -}}

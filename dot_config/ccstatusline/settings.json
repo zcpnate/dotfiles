@@ -1,0 +1,66 @@
+{
+  "version": 3,
+  "lines": [
+    [
+      {
+        "id": "006d9350-51b9-42af-8849-48f5a58db074",
+        "type": "current-working-dir",
+        "backgroundColor": "bgGreen",
+        "metadata": {
+          "fishStyle": "true"
+        }
+      },
+      {
+        "id": "fe305f73-0b08-407b-981c-b4c3b1415b23",
+        "type": "git-branch",
+        "backgroundColor": "bgBlue"
+      },
+      {
+        "id": "1",
+        "type": "model",
+        "color": "cyan"
+      },
+      {
+        "id": "df95c377-05e8-4d85-9ac3-9eaae695d5fb",
+        "type": "context-percentage",
+        "backgroundColor": "bgBrightCyan",
+        "metadata": {
+          "display": "slider"
+        }
+      }
+    ],
+    [],
+    []
+  ],
+  "flexMode": "full-minus-40",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "defaultPadding": " ",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "gitCacheTtlSeconds": 5,
+  "minimalistMode": false,
+  "powerline": {
+    "enabled": true,
+    "separators": [
+      ""
+    ],
+    "separatorInvertBackground": [
+      false
+    ],
+    "startCaps": [
+      ""
+    ],
+    "endCaps": [
+      ""
+    ],
+    "theme": "minimal",
+    "autoAlign": true,
+    "continueThemeAcrossLines": true
+  },
+  "defaultPadding": " ",
+  "installation": {
+    "method": "auto-update",
+    "packageManager": "bun"
+  }
+}
