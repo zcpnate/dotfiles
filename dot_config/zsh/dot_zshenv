@@ -2,8 +2,16 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+export XDG_STATE_HOME="$HOME/.local/state"
+
 export ZDOTDIR=$XDG_CONFIG_HOME/zsh
 export ZSH_CACHE_DIR="$XDG_CACHE_HOME/zsh"
+
+# Relocate history/state out of $HOME into $XDG_STATE_HOME
+export HISTFILE="$XDG_STATE_HOME/zsh/history"
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+export PSQL_HISTORY="$XDG_STATE_HOME/psql/history"
+export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
 
 #.zshenv
 #export ZDOTDIR=~/.config/zsh; [ -f $ZDOTDIR/.zshenv ] && . $ZDOTDIR/.zshenv
