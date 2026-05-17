@@ -87,12 +87,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 ZSH_CUSTOM=$ZDOTDIR/custom
 
 
-# Check if the operating system is macOS
-# if [[ "$OSTYPE" == "darwin"* ]]; then
-#     export PYENV_ROOT="$HOME/.pyenv"
-#     eval "$(/opt/homebrew/bin/pyenv init --path)"
-# fi
-
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
