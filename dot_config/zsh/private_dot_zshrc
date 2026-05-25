@@ -8,6 +8,9 @@ ZSH_THEME=""
 
 zstyle ':omz:update' mode auto
 
+HYPHEN_INSENSITIVE="true"              # treat _ and - as interchangeable in completion
+COMPLETION_WAITING_DOTS="true"         # show dots while slow completions (kubectl/aws) load
+
 # Completion / fzf-tab tuning
 zstyle ':completion:*:git-checkout:*' sort false                             # don't sort git checkout candidates
 zstyle ':completion:*:descriptions' format '[%d]'                            # group support (no escape seqs; fzf-tab ignores them)
@@ -33,12 +36,18 @@ zsh-lsd
 zsh-bat
 mise
 kubectl
+helm
+docker
 orb
+1password
 you-should-use
 ohmyzsh-full-autoupdate
 zoxide
 colored-man-pages
 command-not-found
+extract
+sudo
+macos
 fancy-ctrl-z
 )
 
