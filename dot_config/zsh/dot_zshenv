@@ -13,6 +13,4 @@ export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql/history"
 export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
 
-#.zshenv
-#export ZDOTDIR=~/.config/zsh; [ -f $ZDOTDIR/.zshenv ] && . $ZDOTDIR/.zshenv
 . "$HOME/.cargo/env"

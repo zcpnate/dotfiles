@@ -1,98 +1,24 @@
 setopt globdots
 
-# Path to your oh-my-zsh installation.
-#export ZSH="$HOME/.oh-my-zsh"
 export ZSH="$ZDOTDIR/.oh-my-zsh"
-
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship/starship.toml"
 
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# Prompt handled by starship (see `starship init zsh` below); no OMZ theme.
+# Prompt handled by starship (see `starship init zsh` at end); no OMZ theme.
 ZSH_THEME=""
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+zstyle ':omz:update' mode auto
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Completion / fzf-tab tuning
+zstyle ':completion:*:git-checkout:*' sort false                             # don't sort git checkout candidates
+zstyle ':completion:*:descriptions' format '[%d]'                            # group support (no escape seqs; fzf-tab ignores them)
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}                        # colorize filenames
+zstyle ':completion:*' menu no                                               # let fzf-tab capture the prefix
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'  # preview dir on cd
+zstyle ':fzf-tab:*' switch-group '<' '>'                                     # switch groups with < / >
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-# NOTE: don't use escape sequences here, fzf-tab will ignore them
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-zstyle ':completion:*' menu no
-# preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -1 --color=always $realpath'
-# switch group using `<` and `>`
-zstyle ':fzf-tab:*' switch-group '<' '>'
-
-
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
+DISABLE_UNTRACKED_FILES_DIRTY="true"   # faster VCS status in large repos
 ZSH_CUSTOM=$ZDOTDIR/custom
 
-
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
 plugins=(
 aws
 brew
@@ -116,81 +42,38 @@ command-not-found
 fancy-ctrl-z
 )
 
-# User configuration
-
+# History — re-assert here: macOS /etc/zshrc resets HISTFILE/SIZE for interactive
+# shells AFTER .zshenv, so these must override it (not redundant with .zshenv).
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
-# History configuration
-export HISTSIZE=50000        # Number of commands to keep in memory
-export SAVEHIST=50000        # Number of commands to save to history file
-setopt HIST_IGNORE_DUPS      # Don't save duplicate commands
-setopt HIST_IGNORE_SPACE     # Don't save commands that start with space
-setopt HIST_VERIFY           # Show command with history expansion to user before running it
-setopt SHARE_HISTORY         # Share history between all sessions
-setopt APPEND_HISTORY        # Append to history file, don't overwrite it
-setopt INC_APPEND_HISTORY    # Write to history file immediately, not when shell exits
+export HISTSIZE=50000          # commands kept in memory
+export SAVEHIST=50000          # commands saved to file
+setopt HIST_IGNORE_DUPS        # drop duplicate commands
+setopt HIST_IGNORE_SPACE       # drop commands starting with a space
+setopt HIST_VERIFY             # confirm history-expansion before running
+setopt SHARE_HISTORY           # share history across sessions
+setopt APPEND_HISTORY          # append, don't overwrite
+setopt INC_APPEND_HISTORY      # write immediately, not on exit
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 export EDITOR="code"
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias pip=pip3
-alias zedit="$EDITOR $ZDOTDIR/.zshrc"
-alias meld='meld_script(){ /Applications/Meld.app/Contents/MacOS/Meld $* 2>/dev/null & };meld_script'
-
+# Personal aliases live in $ZDOTDIR/aliases.zsh (sourced after oh-my-zsh below).
 export PATH="$HOME/.git-tools:$PATH"
-
-#bindkey '^I'      autosuggest-accept
-#ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
-#ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-#ZSH_AUTOSUGGEST_USE_ASYNC=true
-
-
-
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# fzf
 export FZF_DEFAULT_COMMAND='fd --type f'
-#export FZF_DEFAULT_OPTS=' - height=40% - preview="bat - color=always {}" - preview-window=right:60%:wrap'
-
-# Options to fzf command
-
 export FZF_DEFAULT_OPTS="--ansi --height=40% --preview-window 'right:60%:wrap'"
-
 export FZF_CTRL_T_OPTS="
   --preview 'bat --color=always --style=numbers --line-range=:500 {}'
   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-
-
-# CTRL-/ to toggle small preview window to see the full command
-# CTRL-Y to copy the command into clipboard using pbcopy
+# CTRL-/ toggles preview; CTRL-Y copies the command to the clipboard
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-/:toggle-preview'
   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
-
-# Print tree structure in the preview window
 export FZF_ALT_C_OPTS="
   --preview 'tree -C {}'"
 
@@ -198,6 +81,7 @@ export PATH=~/.local/bin:$PATH
 export PATH="/opt/homebrew/sbin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
+source $ZDOTDIR/aliases.zsh
 
 unalias gsd 2>/dev/null
 
