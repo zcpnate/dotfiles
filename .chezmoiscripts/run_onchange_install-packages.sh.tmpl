@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# On first run brew isn't on PATH yet (its shellenv is loaded by new login
+# shells, not this script). Locate it for Apple Silicon or Intel and load it.
+if ! command -v brew >/dev/null 2>&1; then
+    for brew_path in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+        if [ -x "$brew_path" ]; then
+            eval "$("$brew_path" shellenv)"
+            break
+        fi
+    done
+fi
+
 brew bundle --file=/dev/stdin <<EOF
 {{ range .packages.brews.tap -}}
 tap {{ . | quote }}
