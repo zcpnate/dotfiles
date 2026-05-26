@@ -4,6 +4,10 @@
 #install homebrew
 if ! command -v brew &> /dev/null
 then
+    # NONINTERACTIVE install uses `sudo -n` and aborts with "Need sudo access
+    # on macOS" if creds aren't cached. Prime them once (prompts for password)
+    # so the install doesn't exit 1 on a fresh machine. Requires an admin user.
+    sudo -v
     NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 else
     echo "Brew is already installed."
