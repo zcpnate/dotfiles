@@ -37,16 +37,10 @@ casks=(
 
 failed=()
 
-# Some casks run privileged (sudo) installers. The sudo timestamp primed during
-# Homebrew install has long expired by now, and brew's sudo call can't prompt
-# mid-run — so it fails with "sudo: a password is required". Prime sudo once up
-# front (prompts now) and refresh the timestamp in the background until this
-# script exits, so every cask's sudo call finds valid cached credentials.
-if [ ${#casks[@]} -gt 0 ] && sudo -v; then
-    ( while true; do sudo -n true 2>/dev/null; sleep 60; kill -0 "$$" 2>/dev/null || exit; done ) &
-    sudo_keepalive=$!
-    trap 'kill "$sudo_keepalive" 2>/dev/null' EXIT
-fi
+# Casks that run privileged (sudo) installers authenticate via Touch ID, enabled
+# earlier by run_once_before_enable-touchid-sudo. That works in chezmoi's
+# TTY-less context where a password prompt would fail with "unable to read
+# password: Input/output error".
 
 for t in "${taps[@]}"; do
     brew tap "$t" || failed+=("tap $t")

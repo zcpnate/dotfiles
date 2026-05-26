@@ -1,0 +1,40 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/bash
+# Enable Touch ID for sudo. chezmoi runs scripts without a controlling TTY, so a
+# normal sudo password prompt fails with "unable to read password: Input/output
+# error" — and that breaks Homebrew cask installers that need sudo. With pam_tid
+# enabled, sudo authenticates via a fingerprint dialog that works without a TTY,
+# so this must run before setup-homebrew and the package install (it sorts first
+# among the run_once_before scripts). Edit /etc/pam.d/sudo_local, not
+# /etc/pam.d/sudo: sudo_local is included by sudo and survives OS updates.
+
+# pam_reattach lets Touch ID work inside tmux/screen; without it sudo in tmux
+# falls back to a password. The .so is installed by the package step (later this
+# apply), so reference it as `optional` — a missing module is non-fatal and just
+# means no Touch ID in tmux until pam-reattach lands.
+pam_reattach="{{ if eq .chezmoi.arch "arm64" }}/opt/homebrew{{ else }}/usr/local{{ end }}/lib/pam/pam_reattach.so"
+
+# Already enabled?
+if [ -f /etc/pam.d/sudo_local ] && grep -q '^[^#]*pam_tid.so' /etc/pam.d/sudo_local; then
+    echo "Touch ID for sudo already enabled."
+    exit 0
+fi
+
+# This one-time write needs root. Provide a GUI askpass so the TTY-less sudo can
+# prompt for a password this once; every sudo after this uses Touch ID.
+askpass="$(mktemp)"
+cat > "$askpass" <<'ASKPASS'
+#!/bin/sh
+osascript -e 'display dialog "Password needed once to enable Touch ID for sudo." default answer "" with title "chezmoi — enable Touch ID for sudo" with hidden answer with icon caution' -e 'text returned of result' 2>/dev/null
+ASKPASS
+chmod +x "$askpass"
+export SUDO_ASKPASS="$askpass"
+trap 'rm -f "$askpass"' EXIT
+
+if printf 'auth       optional       %s\nauth       sufficient     pam_tid.so\n' "$pam_reattach" \
+    | sudo -A tee /etc/pam.d/sudo_local >/dev/null; then
+    echo "Touch ID for sudo enabled."
+else
+    echo "Could not enable Touch ID for sudo (sudo write failed); privileged casks may fail." >&2
+fi
+{{ end -}}
