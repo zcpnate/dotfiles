@@ -3,7 +3,7 @@ packages:
     tap:
       - "buo/cask-upgrade"
       - "hashicorp/tap"
-      - "jundot/omlx"
+      #- "jundot/omlx"
       - "teamookla/speedtest"
     formulae:
       - "actionlint"
@@ -114,8 +114,8 @@ packages:
       - "zoxide"
       - "zsh"
     casks:
-      - "1password"
-      - "1password-cli"
+      #- "1password"
+      #- "1password-cli"
       - "alcove"
       - "betterdisplay"
       - "burp-suite"
