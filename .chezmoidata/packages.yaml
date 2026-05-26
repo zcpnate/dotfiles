@@ -154,7 +154,7 @@ packages:
       #- "okta-verify"
       - "orbstack"
       #- "parallels"
-      - "powershell"
+      #- "powershell"
       - "privileges"
       - "raindropio"
       - "raycast"
