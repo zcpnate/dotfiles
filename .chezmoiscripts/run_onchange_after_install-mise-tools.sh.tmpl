@@ -8,6 +8,17 @@
 #
 # mise config hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-mise install -y
+# brew isn't on PATH on first run; locate it (Apple Silicon or Intel) so the
+# brew-installed mise is found.
+if ! command -v brew >/dev/null 2>&1; then
+    for brew_path in /opt/homebrew/bin/brew /usr/local/bin/brew; do
+        [ -x "$brew_path" ] && eval "$("$brew_path" shellenv)" && break
+    done
+fi
+
+if command -v mise >/dev/null 2>&1; then
+    mise install -y
+else
+    echo "mise not found; skipping tool install." >&2
+fi
 {{ end -}}

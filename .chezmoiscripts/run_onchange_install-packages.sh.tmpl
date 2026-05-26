@@ -1,4 +1,5 @@
 #!/bin/bash
+set -o pipefail
 
 # On first run brew isn't on PATH yet (its shellenv is loaded by new login
 # shells, not this script). Locate it for Apple Silicon or Intel and load it.
@@ -11,7 +12,14 @@ if ! command -v brew >/dev/null 2>&1; then
     done
 fi
 
-brew bundle --file=/dev/stdin <<EOF
+LOG="${HOME}/.cache/chezmoi-brew-bundle.log"
+mkdir -p "$(dirname "$LOG")"
+
+# brew bundle installs everything it can and reports failures at the end. Don't
+# let one failed entry (e.g. a cask needing manual approval) abort the rest of
+# the chezmoi apply — tee to a log and exit 0 so the after-scripts (shell change,
+# mise, tmux) still run. Retry the failures later with: brew bundle install
+if ! brew bundle --file=/dev/stdin 2>&1 <<EOF | tee "$LOG"
 {{ range .packages.brews.tap -}}
 tap {{ . | quote }}
 {{ end -}}
@@ -22,3 +30,8 @@ brew {{ . | quote }}
 cask {{ . | quote }}
 {{ end -}}
 EOF
+then
+    echo >&2
+    echo "⚠️  Some Homebrew packages failed to install. Retry: brew bundle install" >&2
+    echo "   Full log: $LOG" >&2
+fi
