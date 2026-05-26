@@ -1,6 +1,9 @@
 # vim: ft=sh
 # TOKEN from OS keyring. Set: chezmoi secret keyring set --service=slack_status --user=token
-TOKEN={{ keyring "slack_status" "token" }}
+# Probe existence first (no -w, so no keychain prompt) so a skipped/missing token
+# renders an empty TOKEN instead of aborting the apply with "secret not found".
+{{- $hasToken := eq (output "sh" "-c" "security find-generic-password -s slack_status -a token >/dev/null 2>&1; echo $?" | trim) "0" }}
+TOKEN={{ if $hasToken }}{{ keyring "slack_status" "token" }}{{ end }}
 
 PRESET_EMOJI_test=":white_check_mark:"
 PRESET_TEXT_test="Testing status updater"
