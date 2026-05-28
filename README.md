@@ -1,4 +1,4 @@
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply cfsnate
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply nateships
 
 ## Slack token
 
