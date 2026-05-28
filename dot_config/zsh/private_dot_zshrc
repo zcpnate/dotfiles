@@ -88,6 +88,7 @@ export FZF_ALT_C_OPTS="
 
 export PATH=~/.local/bin:$PATH
 export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 source $ZSH/oh-my-zsh.sh
 source $ZDOTDIR/aliases.zsh
