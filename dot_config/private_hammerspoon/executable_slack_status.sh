@@ -25,7 +25,7 @@ TOKEN=$TOKEN
 PRESET_EMOJI_test=":white_check_mark:"
 PRESET_TEXT_test="Testing status updater"
 
-PRESET_EMOJI_zoom=":zoom:"
+PRESET_EMOJI_zoom=":zoom_square:"
 PRESET_TEXT_zoom="In a zoom meeting"
 EOF
     echo

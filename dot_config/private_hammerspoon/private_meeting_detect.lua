@@ -8,8 +8,8 @@
 -- * Ensure there is a 'zoom' preset (one is created by default during setup)
 -- * Install hammerspoon (brew install hammerspoon) if you don't have it
 --   already.
--- * Copy this file to ~/.hammerspoon
--- * Add the following line to ~/.hammerspoon/init.lua
+-- * Copy this file to ~/.config/hammerspoon
+-- * Add the following line to ~/.config/hammerspoon/init.lua
 --      local zoom_detect = require("zoom_detect")
 -- * If it's a fresh `brew install` of Hammerspoon, start it and make sure
 --   accessibility is enabled

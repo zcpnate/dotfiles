@@ -13,4 +13,7 @@ export LESSHISTFILE="$XDG_STATE_HOME/less/history"
 export PSQL_HISTORY="$XDG_STATE_HOME/psql/history"
 export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
 
+# Route ssh-agent traffic (incl. git SSH commit signing) to 1Password's agent.
+export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+
 . "$HOME/.cargo/env"
