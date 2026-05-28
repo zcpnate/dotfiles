@@ -1,5 +1,5 @@
 #!/bin/bash
-CONFIG_FILE="$HOME/.slack_status.conf"
+CONFIG_FILE="${XDG_CONFIG_HOME:-$HOME/.config}/slack_status/config"
 
 # Colors
 red=$(tput setaf 1)
@@ -8,6 +8,7 @@ yellow=$(tput setaf 3)
 reset=$(tput sgr0)
 
 if [[ -f "$CONFIG_FILE" ]]; then
+    # shellcheck source=/dev/null
     . "$CONFIG_FILE"
 else
     echo "${red}No configuration file found at $CONFIG_FILE${reset}"

@@ -11,7 +11,7 @@ if "$chezmoi" secret keyring get --service=slack_status --user=token >/dev/null 
     exit 0
 fi
 
-echo "Slack API token for ~/.slack_status.conf"
+echo "Slack API token for ~/.config/slack_status/config"
 echo "Leave blank to skip (e.g. no token from admin yet). Set it later with:"
 echo "  chezmoi secret keyring set --service=slack_status --user=token"
 printf 'Token: '
