@@ -7,44 +7,11 @@ green=$(tput setaf 2)
 yellow=$(tput setaf 3)
 reset=$(tput sgr0)
 
-# Simple setup command
-if [[ $1 == "setup" ]]; then
-    echo "${green}Slack status updater setup${reset}"
-    echo "${green}==========================${reset}"
-    echo
-    echo "You need to have your slack api token ready. If you don't have one,"
-    echo "go to https://github.com/mivok/slack_status_updater and follow the"
-    echo "instructions there for creating a new slack app."
-    echo
-    read -r -p "${green}Enter your slack token: ${reset}" TOKEN
-    cat > "$CONFIG_FILE" <<EOF
-# vim: ft=sh
-# Configuration file for slack_status
-TOKEN=$TOKEN
-
-PRESET_EMOJI_test=":white_check_mark:"
-PRESET_TEXT_test="Testing status updater"
-
-PRESET_EMOJI_zoom=":zoom_square:"
-PRESET_TEXT_zoom="In a zoom meeting"
-EOF
-    echo
-    echo "A default configuration has been created at ${green}$CONFIG_FILE.${reset}"
-    echo "you can edit that file to add additional presets. Otherwise you"
-    echo "are good to go!"
-    exit 0
-fi
-
 if [[ -f "$CONFIG_FILE" ]]; then
     . "$CONFIG_FILE"
 else
-    echo "${green}Slack status updater${reset}"
-    echo "${green}====================${reset}"
-    echo
-    echo "Set your slack status based on preconfigured presets"
-    echo
-    echo "No configuration file found at $CONFIG_FILE"
-    echo "Run $0 setup to create one"
+    echo "${red}No configuration file found at $CONFIG_FILE${reset}"
+    echo "Run ${green}chezmoi apply${reset} to generate it from the chezmoi source."
     exit 1
 fi
 
